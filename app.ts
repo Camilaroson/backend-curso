@@ -10,7 +10,9 @@ const io = require('socket.io')(http);
 var router = express.Router()
 app.use(express.json())
 app.use(express.urlencoded({extended:true}));
-app.use(express.static(__dirname + 'public'));
+
+app.use(express.static('public'))
+
 
 
 //cargo modulo handlebars 
@@ -31,7 +33,9 @@ app.engine (
 
 app.set("view engine","hbs")
 app.set("views","./views")
-app.use(express.static('public'))
+
+
+
 
 
 
@@ -58,6 +62,6 @@ app.listen(8080 , () =>{
 
 */
 
-http.listen(8000, () => {
+http.listen(8080, () => {
     console.log('Servidor listo :)')
 })
