@@ -5,7 +5,7 @@ import express from 'express';
 const app = express()
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
-
+import moment from 'moment';
 
 var router = express.Router()
 app.use(express.json())
@@ -48,9 +48,19 @@ io.on('connection', (socket:any) => {
     socket.on('producto nuevo', (message:any)=>{
         console.log(message) //el mensaje me traeria los datos del input
         io.emit('producto nuevo', message) //muestra a todos los usuarios en tiempo real
+   
+   
+   
     })
    
+    socket.on('mensaje del chat', (data:any) =>{
+        console.log(data)
+        io.emit('mensaje del chat',data)
+    })
+
 })
+
+
 
 
 // Listen - cambia a http
@@ -62,6 +72,6 @@ app.listen(8080 , () =>{
 
 */
 
-http.listen(8080, () => {
+http.listen(3333, () => {
     console.log('Servidor listo :)')
 })

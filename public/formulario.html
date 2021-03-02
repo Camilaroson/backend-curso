@@ -40,13 +40,41 @@
         
         </tbody>
  </table>
- <div> <a class="btn btn-success" href="http://localhost:8080/api/agregarProductos">Volver al formulario</a>
+ <div> <a class="btn btn-success" href="http://localhost:8888/api/agregarProductos">Volver al formulario</a>
 </div>
 
+        <!-- CHAT-->
+        
+            <div class="container">
+                <form  id="formulario-chat"  class ="chat" action="">
+                <h2 style="color:#0b5fa5 ; text-align :center ; margin-top: 2%;">Chat</h2>
+                   
+                    <input type="text" id="email" placeholder="Ingresa un email" required>
+                    <br>
+                    <div id = "mostrarMensajes"></div>
+                    <br>
+                    <input id="mensaje" class="form-control"  placeholder="Escribe tu mensaje"></input>
+                    <hr>
+                    <button class="btn btn-success">Enviar</button>
+                </form>
+            </div>
+
+            
 
 
+        
+
+
+<!--PARTE DE LOS SCRIPTS-->
 <script src="/socket.io/socket.io.js"></script>
 <script src="/js/mostrarProducto.js"></script>
+<script src="/js/chat.js"></script>
+
+
+
+    
+
+
 
 
 </body>

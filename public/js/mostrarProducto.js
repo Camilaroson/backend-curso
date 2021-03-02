@@ -25,5 +25,3 @@ socket.on('producto nuevo',(message)=>{
 })
 
 
-
-
