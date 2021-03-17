@@ -1,16 +1,5 @@
 
 
-/*creacion de la tabla
-knex.schema.createTable('mensajes', table =>{
-  table.string('email',50)
-  table.string('mensaje',100)
-})
-.then(()=> console.log('Se creo la tabla'))
-.catch((err) => console.log(err))
-.finally(()=> knex.destroy())
-*/
-
-
 //Obtengo los elementos del html
 const formularioChat = document.getElementById('formulario-chat')
 const email = document.getElementById('email')
