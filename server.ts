@@ -1,3 +1,18 @@
+//KNEX Y SQLITE//
+const {sqlite3} = require('./DB/SQLite.db')
+const knex = require('knex')(sqlite3)
+
+//CREO LA TABLA
+/*
+knex.schema.createTable('mensajes', (table: { string: (arg0: string, arg1: number) => void }) =>{
+  table.string('inputMensaje',50)
+  table.string('email',100)
+})
+.then(()=> console.log('Se creo la tabla'))
+.catch((err:any) => console.log(err))
+.finally(()=> knex.destroy())
+*/
+
 //inicializacion express y socket
 
 import { Socket } from 'dgram';
@@ -36,9 +51,6 @@ app.set("views","./views")
 
 
 
-
-
-
 // routers
 app.use('/api', require('./productos'))
 
@@ -46,16 +58,22 @@ app.use('/api', require('./productos'))
 io.on('connection', (socket:any) => {
     //recibe lo que viene del script formulario
     socket.on('producto nuevo', (message:any)=>{
-        console.log(message) //el mensaje me traeria los datos del input
+      //  console.log(message) //el mensaje me traeria los datos del input
         io.emit('producto nuevo', message) //muestra a todos los usuarios en tiempo real
-   
+        
    
    
     })
    
     socket.on('mensaje del chat', (data:any) =>{
-        console.log(data)
+       // console.log(data)
         io.emit('mensaje del chat',data)
+        //GUARDAR SQLITE
+        knex('mensajes').insert(data)
+        .then(()=>console.log("mensaje guardado"))
+        .catch((err:any)=>console.log(err))
+        .finally(()=>knex.destroy())
+        //VER PORQUE GUARDA UNA SOLA VEZ Y DESPUES ROMPE. 
     })
 
 })
