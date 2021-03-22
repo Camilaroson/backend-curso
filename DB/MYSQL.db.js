@@ -1,12 +1,13 @@
 const mysql = {
     client: 'mysql',
     connection: {
-      host : '127.0.0.1',
+      host : 'localhost',
       user : 'root',
       password : '',
-      database : 'productos'
+      database : 'local'
     }
-  };
+
+  }
 
   module.exports = {
     mysql
